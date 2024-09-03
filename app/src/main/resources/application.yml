@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: db_irede
+    admin:
+      enabled: true
+  profiles:
+    include: 'presentation, infra'
+management:
+  info:
+    env:
+      enabled: true
+    java:
+      enabled: true
+    build:
+      enabled: true
+
+  endpoints:
+    web:
+      exposure:
+        include: "*, openapi, swaggerui, info"
+        exclude: "env,beans"
+info:
+  application:
+    name: ${spring.application.name}
+    description: 'O Sistema RAP surgiu da necessidade de melhoria do rastreamento e apontamento da linha de produção da Boardtec, auxiliando no controle da produção desde o recebimento dos componentes até a produção do produto acabado.'
+    version: ${project.version}
+    spring-boot-version: '@project.parent.version@'

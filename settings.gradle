@@ -1,0 +1,9 @@
+rootProject.name = 'db_irede'
+
+include 'infra'
+include 'presentation'
+include 'app'
+include 'domain'
+include 'data'
+
+

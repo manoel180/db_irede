@@ -1,0 +1,21 @@
+
+subprojects {
+    group = 'br.org.iredeam'
+    version = '1.0.0'
+
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+
+    repositories {
+        mavenCentral()
+    }
+    compileJava {
+        sourceCompatibility = 21
+        targetCompatibility = 21
+    }
+
+    tasks.test {
+        useJUnitPlatform()
+    }
+
+}
