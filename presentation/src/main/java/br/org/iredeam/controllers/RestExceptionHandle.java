@@ -1,4 +1,4 @@
-package br.com.boardtec.controllers;
+package br.org.iredeam.controllers;
 
 
 import br.org.iredeam.data.dtos.ErrorDto;

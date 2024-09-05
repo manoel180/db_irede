@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:mysql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
-    username: ${DATABASE_USERNAME}
-    password: ${DATABASE_PASSWORD}
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
     hikari:
       minimumIdle: 4
       maximumPoolSize: 10
@@ -17,5 +17,23 @@ spring:
     open-in-view: false
   liquibase:
     change-log: 'classpath:db/db.changelog-master.yaml'
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/realms/irede_realm
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+jwt:
+  auth:
+    converter:
+      resource-id: "db_irede_client"
+      principal-attribute: "principal_username"
+
+
+
+
+
+
 springdoc:
   show-actuator: true
+

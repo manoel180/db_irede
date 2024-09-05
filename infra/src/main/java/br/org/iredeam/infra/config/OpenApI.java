@@ -12,10 +12,10 @@ public class OpenApI {
     OpenAPI springApi() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Boardtec API")
-                        .description("Api for integrations and reports")
+                        .title("DB_IRede API")
+                        .description("Api for product management")
                         .version("v0.0.1")
-                        .license(new License().name("Copyright")));
+                        .license(new License().name("Copyleft")));
     }
 
 
