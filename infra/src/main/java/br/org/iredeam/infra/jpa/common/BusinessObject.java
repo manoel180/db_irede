@@ -54,7 +54,7 @@ public abstract class BusinessObject<E, O> implements Serializable, ConverterEnt
    * Armazena a data e hora em que o registro foi criado
    */
   @Temporal(TemporalType.TIMESTAMP)
-  @Column(name = "criado_em", nullable = false, updatable = false)
+  @Column(name = "creation", nullable = false, updatable = false)
   @JsonFormat(pattern = "dd/MM/YYYY")
   @CreatedDate
   protected Date creation;
@@ -64,7 +64,7 @@ public abstract class BusinessObject<E, O> implements Serializable, ConverterEnt
    * Indica se um registro da entidade esta ativo ou inativo. Esta flag eh usada para excluir
    * logicamente um registro da entidade quando o mesmo nao puder ser excluido fisicamente
    */
-  @Column(name = "ativo")
+  @Column(name = "active")
   protected boolean active;
 
 }

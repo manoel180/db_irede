@@ -22,6 +22,5 @@ management:
 info:
   application:
     name: ${spring.application.name}
-    description: 'O Sistema RAP surgiu da necessidade de melhoria do rastreamento e apontamento da linha de produção da Boardtec, auxiliando no controle da produção desde o recebimento dos componentes até a produção do produto acabado.'
     version: ${project.version}
     spring-boot-version: '@project.parent.version@'
