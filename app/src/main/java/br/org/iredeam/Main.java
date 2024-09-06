@@ -20,6 +20,12 @@ public class Main {
         SpringApplication.run(Main.class, args);
     }
 
+    static TypeFilter removeModelAndEntitiesFilter(String param) {
+        return (MetadataReader mr, MetadataReaderFactory mrf) -> !mr.getClassMetadata()
+                .getClassName()
+                .endsWith(param);
+    }
+
     @Bean
     BeanFactoryPostProcessor beanFactoryPostProcessor(ApplicationContext beanRegistry) {
         return beanFactory -> {
@@ -31,11 +37,5 @@ public class Main {
         ClassPathBeanDefinitionScanner beanDefinitionScanner = new ClassPathBeanDefinitionScanner(beanRegistry);
         beanDefinitionScanner.addIncludeFilter(removeModelAndEntitiesFilter("Enum"));
         beanDefinitionScanner.scan("br.org.iredeam.*");
-    }
-
-    static TypeFilter removeModelAndEntitiesFilter(String param) {
-        return (MetadataReader mr, MetadataReaderFactory mrf) -> !mr.getClassMetadata()
-                .getClassName()
-                .endsWith(param) ;
     }
 }

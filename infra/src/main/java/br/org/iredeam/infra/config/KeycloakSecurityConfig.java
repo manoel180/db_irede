@@ -19,13 +19,11 @@ class KeycloakSecurityConfig {
 
     private static final String JWT_ROLE_NAME = "groups";
     private static final String ROLE_PREFIX = "ROLE_";
-
-    private final JwtConverter jwtConverter;
-
     private static final String[] PUBLIC_MATCHERS = {"/swagger-ui.html",
             "/swagger-ui/**", "/swagger-resources/**", "/webjars/**",
             "/v2/api-docs", "/v3/api-docs", "/v3/api-docs/**",
-            "/configuration/**", "/actuator/**", "/csrf", "/doc.html" };
+            "/configuration/**", "/actuator/**", "/csrf", "/doc.html"};
+    private final JwtConverter jwtConverter;
 
 //    @Bean
 //    protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
@@ -47,7 +45,7 @@ class KeycloakSecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests((authorize) -> authorize.requestMatchers(PUBLIC_MATCHERS).permitAll()
-                                .anyRequest().authenticated());
+                .anyRequest().authenticated());
 
         http.sessionManagement(sess -> sess.sessionCreationPolicy(
                 SessionCreationPolicy.STATELESS));
@@ -55,7 +53,6 @@ class KeycloakSecurityConfig {
 
         return http.build();
     }
-
 
 
 }

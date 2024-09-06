@@ -6,6 +6,6 @@ import org.springframework.data.repository.NoRepositoryBean;
 
 @NoRepositoryBean
 public interface CRUDGenericRepository<E extends BusinessObject<E, O>, O extends BusinessObjectDomain>
-	extends JpaRepository<E, Long> {
+        extends JpaRepository<E, Long> {
 
 }

@@ -1,0 +1,60 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1725555915328-1
+      author: Manoel Neto
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_products
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: creation
+                  type: DATETIME
+              - column:
+                  name: active
+                  type: TINYINT(1)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(50)
+              - column:
+                  name: description
+                  type: VARCHAR(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: price
+                  type: DECIMAL
+              - column:
+                  constraints:
+                    nullable: false
+                  name: expiration_date
+                  type: DATE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: category_id
+                  type: BIGINT
+            tableName: products
+  - changeSet:
+      id: 1725555915328-2
+      author: Manoel Neto
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: category_id
+            baseTableName: products
+            constraintName: FK_PRODUCTS_ON_CATEGORYID
+            referencedColumnNames: id
+            referencedTableName: categories
+

@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 @NoRepositoryBean
-public abstract class JpaCrudRepository<E extends BusinessObject<E, O>, O extends BusinessObjectDomain>
-	 {
+public abstract class JpaCrudRepository<E extends BusinessObject<E, O>, O extends BusinessObjectDomain> {
 
     private final CRUDGenericRepository<E, O> jpa;
     private final E entity;
@@ -19,20 +18,22 @@ public abstract class JpaCrudRepository<E extends BusinessObject<E, O>, O extend
     }
 
     public O save(O obj) {
-	E e = this.jpa.save(entity.from(obj));
-	return entity.toDomain(e);
+        E e = this.jpa.save(entity.from(obj));
+        return entity.toDomain(e);
     }
+
     public Optional<O> findById(Long id) {
-	Optional<E> jpaEntity = jpa.findById(id);
-	return jpaEntity.map(entity::toDomain);
+        Optional<E> jpaEntity = jpa.findById(id);
+        return jpaEntity.map(entity::toDomain);
     }
+
     public List<O> findAll() {
-	List<E> list = this.jpa.findAll();
-	return list.stream().map(entity::toDomain).toList();
+        List<E> list = this.jpa.findAll();
+        return list.stream().map(entity::toDomain).toList();
     }
 
     public void delete(O obj) {
-	this.jpa.save(entity.from(obj));
+        this.jpa.delete(entity.from(obj));
     }
 
 }

@@ -20,8 +20,7 @@ import java.util.List;
 public class CategoryController {
 
 
-
-    private IFindAllCategory<CategoryDto> findAllCategory;
+    private final IFindAllCategory<CategoryDto> findAllCategory;
 
     public CategoryController(IFindAllCategory<CategoryDto> findAllCategory) {
         this.findAllCategory = findAllCategory;
@@ -30,7 +29,7 @@ public class CategoryController {
     @GetMapping
     @Secured({Code.R_CATEGORY})
     public @ResponseBody ResponseEntity<?> listCategories() {
-            List<CategoryDto> categoryDtos = findAllCategory.execute();
-            return ResponseEntity.ok().body(categoryDtos);
+        List<CategoryDto> categoryDtos = findAllCategory.execute();
+        return ResponseEntity.ok().body(categoryDtos);
     }
 }

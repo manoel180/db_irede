@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface ICategoryMapper {
     CategoryDto categoryToCategoryDto(Category category);
+
     Category categoryFormToCategory(CategoryRequest categoryRequest);
+
     List<CategoryDto> categoryToListCategoryDto(List<Category> categories);
 }
