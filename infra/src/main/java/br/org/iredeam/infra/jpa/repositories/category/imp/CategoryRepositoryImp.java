@@ -12,10 +12,10 @@ public class CategoryRepositoryImp extends JpaCrudRepository<CategoryEntity, Cat
     private final ICategoryJpaRepository categoryJpaRepository;
     private final CategoryEntity categoryEntity;
 
-   public CategoryRepositoryImp(ICategoryJpaRepository categoryJpaRepository, CategoryEntity categoryEntity) {
-	super(categoryJpaRepository, categoryEntity);
-	this.categoryJpaRepository = categoryJpaRepository;
-    this.categoryEntity = categoryEntity;
-   }
+    public CategoryRepositoryImp(ICategoryJpaRepository categoryJpaRepository, CategoryEntity categoryEntity) {
+        super(categoryJpaRepository, categoryEntity);
+        this.categoryJpaRepository = categoryJpaRepository;
+        this.categoryEntity = categoryEntity;
+    }
 
 }

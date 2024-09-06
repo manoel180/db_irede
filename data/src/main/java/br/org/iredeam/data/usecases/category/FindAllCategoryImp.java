@@ -10,17 +10,18 @@ import java.util.List;
 
 
 public class FindAllCategoryImp implements IFindAllCategory<CategoryDto> {
-    private ICategoryRepository categoryRepository;
-    private ICategoryMapper categoryMapper;
+    private final ICategoryRepository categoryRepository;
+    private final ICategoryMapper categoryMapper;
 
     public FindAllCategoryImp(ICategoryRepository categoryRepository, ICategoryMapper categoryMapper) {
         this.categoryRepository = categoryRepository;
         this.categoryMapper = categoryMapper;
     }
 
+
     @Override
     public List<CategoryDto> execute() {
-    	List<Category> categories = categoryRepository.findAll();
+        List<Category> categories = categoryRepository.findAll();
         return categoryMapper.categoryToListCategoryDto(categories);
     }
 }

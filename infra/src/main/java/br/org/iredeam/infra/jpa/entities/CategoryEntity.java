@@ -32,12 +32,12 @@ public class CategoryEntity extends BusinessObject<CategoryEntity, Category> {
         return CategoryEntity.builder()
                 .entityId(obj.getEntityId())
                 .name(obj.getName())
-            .active(obj.getActive())
-            .build();
+                .build();
     }
+
     @Override
     public Category toDomain(CategoryEntity jpaEntity) {
-        return new Category(jpaEntity.entityId, jpaEntity.getCreation(),null,null,jpaEntity.isActive(), jpaEntity.getName());
+        return new Category(jpaEntity.entityId, jpaEntity.getCreation(), jpaEntity.isActive(), jpaEntity.getName());
     }
 
 

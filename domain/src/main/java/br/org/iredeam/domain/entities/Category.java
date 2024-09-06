@@ -14,18 +14,19 @@ public class Category extends BusinessObjectDomain {
 
     private String name;
 
-        public String getName() {
+    public Category() {
+    }
+
+    public Category(Long entityId, Date creation, Boolean active, String name) {
+        super(entityId, creation, active);
+        this.name = name;
+    }
+
+    public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
-    }
-
-    public Category(){}
-
-    public Category(Long entityId, Date creation, Date lastUpdated, Date deleted, Boolean active, String name) {
-        super(entityId, creation, lastUpdated, deleted, active);
         this.name = name;
     }
 }

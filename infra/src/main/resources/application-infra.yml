@@ -11,10 +11,9 @@ spring:
       leakDetectionThreshold: 300000
       auto-commit: true
   jpa:
-    show-sql: false
+    show-sql: true
     hibernate:
       ddl-auto: validate
-    open-in-view: false
   liquibase:
     change-log: 'classpath:db/db.changelog-master.yaml'
   security:
@@ -28,12 +27,7 @@ jwt:
     converter:
       resource-id: "db_irede_client"
       principal-attribute: "principal_username"
-
-
-
-
-
-
 springdoc:
   show-actuator: true
+  enable-spring-security: true
 
