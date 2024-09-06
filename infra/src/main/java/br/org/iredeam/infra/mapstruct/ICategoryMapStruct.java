@@ -1,4 +1,4 @@
-package br.org.iredeam.infra.mapstruct.enginner;
+package br.org.iredeam.infra.mapstruct;
 
 import br.org.iredeam.data.dtos.CategoryDto;
 import br.org.iredeam.domain.entities.Category;

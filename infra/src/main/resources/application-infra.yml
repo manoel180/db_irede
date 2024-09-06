@@ -28,6 +28,6 @@ jwt:
       resource-id: "db_irede_client"
       principal-attribute: "principal_username"
 springdoc:
-  show-actuator: true
+  show-actuator: false
   enable-spring-security: true
 

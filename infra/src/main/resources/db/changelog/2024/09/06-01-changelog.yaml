@@ -1,0 +1,59 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1725638991845-1
+      author: Manoel Neto
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_images
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: creation
+                  type: DATETIME
+              - column:
+                  name: active
+                  type: TINYINT(1)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(100)
+              - column:
+                  name: image
+                  type: LONGBLOB
+              - column:
+                  constraints:
+                    nullable: false
+                  name: product_id
+                  type: BIGINT
+            tableName: images
+  - changeSet:
+      id: 1725638991845-2
+      author: Manoel Neto
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: product_id, name
+            constraintName: UKImage
+            tableName: images
+  - changeSet:
+      id: 1725638991845-3
+      author: Manoel Neto
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: product_id
+            baseTableName: images
+            constraintName: FK_IMAGES_ON_PRODUCTID
+            referencedColumnNames: id
+            referencedTableName: products
+

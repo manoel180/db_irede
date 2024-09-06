@@ -1,10 +1,10 @@
-package br.org.iredeam.infra.mapstruct.enginner.imp;
+package br.org.iredeam.infra.mapstruct.imp;
 
 import br.org.iredeam.data.dtos.ProductDto;
 import br.org.iredeam.data.mappers.IProductMapper;
 import br.org.iredeam.data.requests.ProductRequest;
 import br.org.iredeam.domain.entities.Product;
-import br.org.iredeam.infra.mapstruct.enginner.IProductMapStruct;
+import br.org.iredeam.infra.mapstruct.IProductMapStruct;
 
 import java.util.List;
 

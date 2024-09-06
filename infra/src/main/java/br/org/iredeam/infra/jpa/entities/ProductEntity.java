@@ -47,7 +47,7 @@ public class ProductEntity extends BusinessObject<ProductEntity, Product> {
                 .description(obj.getDescription())
                 .price(obj.getPrice())
                 .expirationDate(obj.getExpirationDate())
-                .category(new CategoryEntity().from(obj.getCategory()))
+                .category(obj.getCategory() != null ? new CategoryEntity().from(obj.getCategory()) : null)
                 .build();
     }
 
@@ -60,7 +60,7 @@ public class ProductEntity extends BusinessObject<ProductEntity, Product> {
                 jpaEntity.getDescription(),
                 jpaEntity.getPrice(),
                 jpaEntity.getExpirationDate(),
-                jpaEntity.getCategory().toDomain(jpaEntity.getCategory())
+                jpaEntity.getCategory() != null ? jpaEntity.getCategory().toDomain(jpaEntity.getCategory()) : null
         );
     }
 

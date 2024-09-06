@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/product")
-@Tag(name = "Product", description = "List all products")
+@Tag(name = "Product", description = "create new product")
 public class CreateProductController {
 
 

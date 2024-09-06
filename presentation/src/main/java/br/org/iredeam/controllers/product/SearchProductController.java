@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/product")
-@Tag(name = "Product", description = "List all products")
+@Tag(name = "Product", description = "Search products by name and description")
 public class SearchProductController {
 
 
