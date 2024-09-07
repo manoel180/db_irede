@@ -3,10 +3,14 @@ plugins {
 }
 apply plugin: 'io.spring.dependency-management'
 dependencies {
-    implementation  project(':domain')
-    implementation  project(':data')
-    implementation  project(':infra')
-    implementation  project(':presentation')
+    implementation project(':domain')
+    implementation project(':data')
+    implementation project(':infra')
+    implementation project(':presentation')
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    developmentOnly("org.springframework.boot:spring-boot-docker-compose")
+}
+springBoot {
+    mainClass = 'br.org.iredeam.Main'
 }

@@ -14,15 +14,15 @@ spring:
     show-sql: false
     hibernate:
       ddl-auto: validate
-    open-in-view: false
   liquibase:
     change-log: 'classpath:db/db.changelog-master.yaml'
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8081/realms/irede_realm
+          issuer-uri: ${JWT_ISSUER_URI}
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
 jwt:
   auth:
     converter:
@@ -30,10 +30,10 @@ jwt:
       principal-attribute: "principal_username"
 
 
-
-
-
-
 springdoc:
-  show-actuator: true
-
+  show-actuator: false
+  enable-spring-security: true
+  swagger-ui:
+    oauth:
+      client-id: ${jwt.auth.converter.resource-id}
+      client-secret: ${KC_SECRET}

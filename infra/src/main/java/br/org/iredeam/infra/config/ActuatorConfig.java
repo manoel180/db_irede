@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ActuatorConfig {
 
-	@Bean
-	JvmThreadMetrics threadMetrics() {
-		return new JvmThreadMetrics();
-	}
+    @Bean
+    JvmThreadMetrics threadMetrics() {
+        return new JvmThreadMetrics();
+    }
 
 
 }

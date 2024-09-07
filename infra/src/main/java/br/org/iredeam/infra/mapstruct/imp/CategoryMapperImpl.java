@@ -1,10 +1,10 @@
-package br.org.iredeam.infra.mapstruct.enginner.imp;
+package br.org.iredeam.infra.mapstruct.imp;
 
 import br.org.iredeam.data.dtos.CategoryDto;
 import br.org.iredeam.data.mappers.ICategoryMapper;
 import br.org.iredeam.data.requests.CategoryRequest;
 import br.org.iredeam.domain.entities.Category;
-import br.org.iredeam.infra.mapstruct.enginner.ICategoryMapStruct;
+import br.org.iredeam.infra.mapstruct.ICategoryMapStruct;
 
 import java.util.List;
 

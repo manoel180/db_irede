@@ -1,22 +1,17 @@
 package br.org.iredeam.data.commons;
 
-import java.util.Date;
-
-public abstract  class GenericDto {
+public abstract class GenericDto {
     private Long entityId;
     private String createdAt;
-    private Date updatedAt;
 
-    private Date deleted;
 
-    protected GenericDto(){
+    protected GenericDto() {
     }
 
-    protected GenericDto(Long entityId, String createdAt, Date updatedAt, Date deleted) {
+    protected GenericDto(Long entityId, String createdAt) {
         this.entityId = entityId;
         this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.deleted = deleted;
+
     }
 
     public Long getEntityId() {
@@ -31,23 +26,7 @@ public abstract  class GenericDto {
         return createdAt;
     }
 
-    public void setCreatedAt(String  createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Date getDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(Date deleted) {
-        this.deleted = deleted;
     }
 }
