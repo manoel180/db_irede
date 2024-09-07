@@ -12,7 +12,7 @@ services:
       - ./init:/docker-entrypoint-initdb.d
       - mysql-volume:/var/lib/mysql
     networks:
-      - keycloak_network
+      - db_irede_network
     healthcheck:
       test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
       timeout: 5s
@@ -20,11 +20,14 @@ services:
 
   keycloak:
     image: quay.io/keycloak/keycloak:25.0.4
-    command: start
+    command: start --import-realm
+    volumes:
+      - ./keycloak/imports:/opt/keycloak/data/import
     environment:
-      KC_HOSTNAME: localhost
+      KC_HOSTNAME: http://localhost:8081/
       KC_HOSTNAME_PORT: 8081
-      KC_HOSTNAME_STRICT_BACKCHANNEL: false
+      KC_HOSTNAME_STRICT_BACKCHANNEL: true
+      KC_HOSTNAME_BACKCHANNEL_DYNAMIC: true
       KC_HTTP_ENABLED: true
       KC_HOSTNAME_STRICT_HTTPS: false
       KC_HEALTH_ENABLED: true
@@ -40,14 +43,34 @@ services:
     depends_on:
       db:
         condition: service_healthy
-
     networks:
-      - keycloak_network
+      - db_irede_network
+
+  app:
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+        DATABASE_HOST: db
+        DATABASE_PORT: 3306
+        DATABASE_NAME: ${DATABASE_NAME}
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        JWT_ISSUER_URI: ${JWT_ISSUER_URI}
+        JWT_JWK_SET_URI: ${JWT_ISSUER_URI}/protocol/openid-connect/certs
+        KC_SECRET: ${KC_SECRET}
+    ports:
+      - 9090:9090
+    networks:
+      - db_irede_network
 
 volumes:
   mysql-volume:
     driver: local
 
 networks:
-  keycloak_network:
+  db_irede_network:
     driver: bridge

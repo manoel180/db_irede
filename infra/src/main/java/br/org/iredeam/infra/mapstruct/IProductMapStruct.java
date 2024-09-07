@@ -19,6 +19,9 @@ public interface IProductMapStruct {
     List<ProductDto> map(List<Product> productsList);
 
 
+    @Mapping(target = "entityId", ignore = true)
+    @Mapping(target = "creation", ignore = true)
+    @Mapping(target = "active", ignore = true)
     Product map(ProductRequest productRequest);
 
 }

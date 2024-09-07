@@ -11,7 +11,7 @@ spring:
       leakDetectionThreshold: 300000
       auto-commit: true
   jpa:
-    show-sql: true
+    show-sql: false
     hibernate:
       ddl-auto: validate
   liquibase:
@@ -20,14 +20,20 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8081/realms/irede_realm
+          issuer-uri: ${JWT_ISSUER_URI}
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
 jwt:
   auth:
     converter:
       resource-id: "db_irede_client"
       principal-attribute: "principal_username"
+
+
 springdoc:
   show-actuator: false
   enable-spring-security: true
-
+  swagger-ui:
+    oauth:
+      client-id: ${jwt.auth.converter.resource-id}
+      client-secret: ${KC_SECRET}

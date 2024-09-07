@@ -20,6 +20,9 @@ public interface IImageMapStruct {
 
     List<ImageDto> map(List<Image> imageList);
 
+    @Mapping(target = "entityId", ignore = true)
+    @Mapping(target = "creation", ignore = true)
+    @Mapping(target = "active", ignore = true)
     @Mapping(target = "product.entityId", source = "product")
     Image map(ImageRequest imageRequest);
 
